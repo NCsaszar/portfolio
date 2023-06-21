@@ -1,12 +1,19 @@
 import { motion } from 'framer-motion';
 import { styles } from '../styles.js';
 import { ComputersCanvas } from './canvas';
+import { useSpring, animated } from 'react-spring';
 
 const Hero = () => {
+  const slideInAnimation = useSpring({
+    from: { opacity: 0, transform: 'translateX(-100px)' },
+    to: { opacity: 1, transform: 'translateX(0)' },
+    config: { duration: 500 },
+  });
+
   return (
     <section className='relative w-full h-screen mx-auto'>
       <div
-        className={`${styles.paddingX} absolute inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5`}
+        className={`${styles.paddingX} absolute inset-0 top-[100px] max-w-7xl mx-auto flex flex-row items-start gap-5`}
       >
         <div className='flex flex-col justify-center items-center mt-5'>
           <div className='w-5 h-5 rounded-full bg-[#915eff]' />
@@ -16,9 +23,18 @@ const Hero = () => {
           <h1 className={`${styles.heroHeadText}`}>
             Hi, I'm <span className='text-[#915eff]'>Nicholas</span>
           </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            Who i am as a dev
-          </p>
+          <animated.div
+            className={`${styles.heroSubText} mt-2 text-secondary`}
+            style={slideInAnimation}
+          >
+            I am a Junior Full Stack Software Engineer with a solid foundation
+            in Computer Science from East Stroudsburg University. As a recent
+            graduate from Hack Reactor the Full Stack Immersive bootcamp, I have
+            gained up-to-date knowledge and practical experience in the latest
+            web development technologies/frameworks and industry best practices.
+            Additionally, I have experience working in agile/scrum environments,
+            effectively collaborating with cross-functional teams.
+          </animated.div>
         </div>
       </div>
       <ComputersCanvas />

@@ -21,7 +21,11 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt='logo' className='w-9 h-9 object-contain' />
+          <img
+            src={logo}
+            alt='logo'
+            className='w-16 h-16 object-contain rounded-full'
+          />
           <p className='text-white text-[18px] font-bold cursor-pointer'>
             <span className='sm:block hidden'>Nicholas Csaszar</span>
           </p>
